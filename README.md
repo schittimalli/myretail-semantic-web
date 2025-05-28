@@ -8,9 +8,9 @@ This expose 2 end points
 2) TO product based on ID
 ---
 
-## 📡 GraphQL Endpoint
+## 📡To get ALL Products GraphQL Endpoint
 
-**This is to get ALL Products**
+****
 
 **URL:** `http://localhost:8080/graphql`
 
@@ -67,12 +67,9 @@ query {
 
 ---
 
-## 📡 GraphQL Endpoint
+## 📡Get products based on ID GraphQL Endpoint
 
-**get products based on ID**
-
- 
-
+****
 ---
 
 **URL:** `http://localhost:8080/graphql`
