@@ -2,9 +2,15 @@
 
 A Spring Boot application that serves product data using **GraphQL**, powered by **Apache Jena** and **RDF4J**. The application uses semantic web standards (OWL, RDF) to describe and query BestBuy-style product information.
 
+
+This expose 2 end points 
+1) to Get ALL products
+2) TO product based on ID
 ---
 
 ## 📡 GraphQL Endpoint
+
+**This is to get ALL Products**
 
 **URL:** `http://localhost:8080/graphql`
 
@@ -56,6 +62,53 @@ query {
   }
 }
 ```
+                ************get products based on ID************
+
+
+## 📡 GraphQL Endpoint
+
+**URL:** `http://localhost:8080/graphql`
+
+---
+
+## 🧪 Sample Query
+
+```graphql
+
+query {
+product(id: "BBY-0003") {
+id
+name
+brand
+category
+image {
+url
+}
+}
+}
+```
+
+---
+
+## 📥 Sample Response
+
+```json
+{
+"data": {
+"product": {
+"id": "BBY-0003",
+"name": "LG OLED TV",
+"brand": "http://bestbuy.com/ontology#LG",
+"category": "http://bestbuy.com/ontology#TV",
+"image": {
+"url": "https://s3.amazonaws.com/bestbuy/image3.jpg"
+}
+}
+}
+}
+```
+
+
 
 ---
 
