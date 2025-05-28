@@ -62,10 +62,18 @@ query {
   }
 }
 ```
-                ************get products based on ID************
+     
 
+
+---
 
 ## 📡 GraphQL Endpoint
+
+**get products based on ID**
+
+ 
+
+---
 
 **URL:** `http://localhost:8080/graphql`
 
