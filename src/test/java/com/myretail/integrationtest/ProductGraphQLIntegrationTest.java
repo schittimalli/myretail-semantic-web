@@ -18,8 +18,9 @@ public class ProductGraphQLIntegrationTest {
             .variable("id", "BBY-0003")
             .execute()
             .path("product.id").entity(String.class).isEqualTo("BBY-0003")
-            .path("product.name").entity(String.class).satisfies(name -> {
-                System.out.println("Product name: " + name);
-            });
+            .path("product.name").entity(String.class).isEqualTo("LG OLED TV")
+            .path("product.brand").entity(String.class).isEqualTo("http://bestbuy.com/ontology#LG")
+            .path("product.category").entity(String.class).isEqualTo("http://bestbuy.com/ontology#TV")
+            .path("product.image.url").entity(String.class).isEqualTo("https://s3.amazonaws.com/bestbuy/image3.jpg");
     }
 }
