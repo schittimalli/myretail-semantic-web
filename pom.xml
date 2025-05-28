@@ -33,15 +33,9 @@
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.15.2</version> <!-- Choose the latest version for your project -->
+      <version>2.15.2</version>
     </dependency>
 
-<!--    <dependency>-->
-<!--      <groupId>org.projectlombok</groupId>-->
-<!--      <artifactId>lombok</artifactId>-->
-<!--      <version>1.18.30</version> &lt;!&ndash; Check for the latest version &ndash;&gt;-->
-<!--      <scope>provided</scope>-->
-<!--    </dependency>-->
 
     <!-- RDF4J SPARQL client -->
     <dependency>
