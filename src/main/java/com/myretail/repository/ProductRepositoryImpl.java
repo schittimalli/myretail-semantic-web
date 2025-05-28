@@ -9,7 +9,8 @@ import org.eclipse.rdf4j.query.TupleQueryResult;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 import org.eclipse.rdf4j.repository.sparql.SPARQLRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     private final ProductMapper productMapper;
     private static final String ENDPOINT = "http://localhost:3030/myretail/sparql";
 
+    private static final Logger logger = LoggerFactory.getLogger(ProductRepositoryImpl.class);
 
     public ProductRepositoryImpl(ProductMapper productMapper) {
         this.productMapper = productMapper;
@@ -66,6 +68,8 @@ public class ProductRepositoryImpl implements ProductRepository {
                 }
             }
         } catch (Exception e) {
+            logger.error("SPARQL query failed");
+
             throw new SPARQLQueryException("SPARQL query failed");
         }
 
@@ -93,6 +97,9 @@ public class ProductRepositoryImpl implements ProductRepository {
             try (TupleQueryResult result = q.evaluate()) {
                 return result.hasNext() ? Optional.of(productMapper.toProduct(result.next())) : Optional.empty();
             }
+        }catch (Exception e) {
+            logger.error("SPARQL query failed");
+            throw new SPARQLQueryException("SPARQL query failed");
         }
     }
 }
