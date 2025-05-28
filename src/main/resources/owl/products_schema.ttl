@@ -1,0 +1,20 @@
+@prefix : <http://bestbuy.com/ontology#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:Product a owl:Class .
+:ProductCategory a owl:Class .
+:Brand a owl:Class .
+:Image a owl:Class .
+:Feature a owl:Class .
+:Specification a owl:Class .
+
+:hasCategory a owl:ObjectProperty ; rdfs:domain :Product ; rdfs:range :ProductCategory .
+:hasBrand a owl:ObjectProperty ; rdfs:domain :Product ; rdfs:range :Brand .
+:hasImage a owl:ObjectProperty ; rdfs:domain :Product ; rdfs:range :Image .
+:hasFeature a owl:ObjectProperty ; rdfs:domain :Product ; rdfs:range :Feature .
+
+:productId a owl:DatatypeProperty ; rdfs:domain :Product ; rdfs:range xsd:string .
+:productName a owl:DatatypeProperty ; rdfs:domain :Product ; rdfs:range xsd:string .
+:imageURL a owl:DatatypeProperty ; rdfs:domain :Image ; rdfs:range xsd:anyURI .

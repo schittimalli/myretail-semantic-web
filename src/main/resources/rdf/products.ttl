@@ -1,0 +1,85 @@
+@prefix : <http://bestbuy.com/ontology#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+# Products (20 records)
+:product1 a :Product ;
+    :productId "BBY-0001" ;
+    :productName "Sony 4K Smart TV" ;
+    :hasBrand :Sony ;
+    :hasCategory :TV ;
+    :hasImage :image1 ;
+    :hasFeature :4K, :OLED .
+
+:product2 a :Product ;
+    :productId "BBY-0002" ;
+    :productName "Samsung OLED TV" ;
+    :hasBrand :Samsung ;
+    :hasCategory :TV ;
+    :hasImage :image2 ;
+    :hasFeature :4K, :WiFi .
+
+:product3 a :Product ;
+    :productId "BBY-0003" ;
+    :productName "LG OLED TV" ;
+    :hasBrand :LG ;
+    :hasCategory :TV ;
+    :hasImage :image3 ;
+    :hasFeature :4K, :OLED .
+
+:product4 a :Product ;
+    :productId "BBY-0004" ;
+    :productName "Apple iPhone 14" ;
+    :hasBrand :Apple ;
+    :hasCategory :Smartphone ;
+    :hasImage :image4 ;
+    :hasFeature :WiFi, :Touchscreen .
+
+:product5 a :Product ;
+    :productId "BBY-0005" ;
+    :productName "Dell XPS 13" ;
+    :hasBrand :Dell ;
+    :hasCategory :Laptop ;
+    :hasImage :image5 ;
+    :hasFeature :Touchscreen, :WiFi .
+
+:product6 a :Product ; :productId "BBY-0006" ; :productName "Sony Bluetooth Speaker" ; :hasBrand :Sony ; :hasCategory :Speaker ; :hasImage :image6 ; :hasFeature :Bluetooth .
+:product7 a :Product ; :productId "BBY-0007" ; :productName "Samsung Soundbar" ; :hasBrand :Samsung ; :hasCategory :Speaker ; :hasImage :image7 ; :hasFeature :Bluetooth .
+:product8 a :Product ; :productId "BBY-0008" ; :productName "LG Gram 16" ; :hasBrand :LG ; :hasCategory :Laptop ; :hasImage :image8 ; :hasFeature :WiFi .
+:product9 a :Product ; :productId "BBY-0009" ; :productName "Apple MacBook Air M2" ; :hasBrand :Apple ; :hasCategory :Laptop ; :hasImage :image9 ; :hasFeature :WiFi .
+:product10 a :Product ; :productId "BBY-0010" ; :productName "Dell Ultrasharp Monitor" ; :hasBrand :Dell ; :hasCategory :TV ; :hasImage :image10 ; :hasFeature :4K .
+
+:product11 a :Product ; :productId "BBY-0011" ; :productName "Sony Xperia 5" ; :hasBrand :Sony ; :hasCategory :Smartphone ; :hasImage :image11 ; :hasFeature :WiFi .
+:product12 a :Product ; :productId "BBY-0012" ; :productName "Samsung Galaxy S22" ; :hasBrand :Samsung ; :hasCategory :Smartphone ; :hasImage :image12 ; :hasFeature :Touchscreen .
+:product13 a :Product ; :productId "BBY-0013" ; :productName "LG NanoCell TV" ; :hasBrand :LG ; :hasCategory :TV ; :hasImage :image13 ; :hasFeature :4K .
+:product14 a :Product ; :productId "BBY-0014" ; :productName "Apple iPad Pro" ; :hasBrand :Apple ; :hasCategory :Smartphone ; :hasImage :image14 ; :hasFeature :Touchscreen .
+:product15 a :Product ; :productId "BBY-0015" ; :productName "Dell Latitude 7490" ; :hasBrand :Dell ; :hasCategory :Laptop ; :hasImage :image15 ; :hasFeature :WiFi .
+
+:product16 a :Product ; :productId "BBY-0016" ; :productName "Sony WH-1000XM5" ; :hasBrand :Sony ; :hasCategory :Speaker ; :hasImage :image16 ; :hasFeature :Bluetooth .
+:product17 a :Product ; :productId "BBY-0017" ; :productName "Samsung Galaxy Buds" ; :hasBrand :Samsung ; :hasCategory :Speaker ; :hasImage :image17 ; :hasFeature :Bluetooth .
+:product18 a :Product ; :productId "BBY-0018" ; :productName "LG UltraWide Monitor" ; :hasBrand :LG ; :hasCategory :TV ; :hasImage :image18 ; :hasFeature :4K .
+:product19 a :Product ; :productId "BBY-0019" ; :productName "Apple Watch Series 8" ; :hasBrand :Apple ; :hasCategory :Smartphone ; :hasImage :image19 ; :hasFeature :WiFi .
+:product20 a :Product ; :productId "BBY-0020" ; :productName "Dell Precision Workstation" ; :hasBrand :Dell ; :hasCategory :Laptop ; :hasImage :image20 ; :hasFeature :WiFi .
+
+# Images
+:image1 a :Image ; :imageURL <https://s3.amazonaws.com/bestbuy/image1.jpg> .
+:image2 a :Image ; :imageURL <https://s3.amazonaws.com/bestbuy/image2.jpg> .
+:image3 a :Image ; :imageURL <https://s3.amazonaws.com/bestbuy/image3.jpg> .
+:image4 a :Image ; :imageURL <https://s3.amazonaws.com/bestbuy/image4.jpg> .
+:image5 a :Image ; :imageURL <https://s3.amazonaws.com/bestbuy/image5.jpg> .
+:image6 a :Image ; :imageURL <https://s3.amazonaws.com/bestbuy/image6.jpg> .
+:image7 a :Image ; :imageURL <https://s3.amazonaws.com/bestbuy/image7.jpg> .
+:image8 a :Image ; :imageURL <https://s3.amazonaws.com/bestbuy/image8.jpg> .
+:image9 a :Image ; :imageURL <https://s3.amazonaws.com/bestbuy/image9.jpg> .
+:image10 a :Image ; :imageURL <https://s3.amazonaws.com/bestbuy/image10.jpg> .
+:image11 a :Image ; :imageURL <https://s3.amazonaws.com/bestbuy/image11.jpg> .
+:image12 a :Image ; :imageURL <https://s3.amazonaws.com/bestbuy/image12.jpg> .
+:image13 a :Image ; :imageURL <https://s3.amazonaws.com/bestbuy/image13.jpg> .
+:image14 a :Image ; :imageURL <https://s3.amazonaws.com/bestbuy/image14.jpg> .
+:image15 a :Image ; :imageURL <https://s3.amazonaws.com/bestbuy/image15.jpg> .
+:image16 a :Image ; :imageURL <https://s3.amazonaws.com/bestbuy/image16.jpg> .
+:image17 a :Image ; :imageURL <https://s3.amazonaws.com/bestbuy/image17.jpg> .
+:image18 a :Image ; :imageURL <https://s3.amazonaws.com/bestbuy/image18.jpg> .
+:image19 a :Image ; :imageURL <https://s3.amazonaws.com/bestbuy/image19.jpg> .
+:image20 a :Image ; :imageURL <https://s3.amazonaws.com/bestbuy/image20.jpg> .
