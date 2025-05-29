@@ -1,24 +1,73 @@
-# 🛍️ myretail-semantic-web
+# **MyRetail Product Service**
+A microservice that provides access to product details such as name, brand, category, and image details by querying a SPARQL endpoint.
+## **Overview**
+The `Product Service` is designed to query product data from a SPARQL-based triple store (RDF database). It integrates with RDF4J and SPARQL to retrieve information using a defined ontology.
+The project uses **GraphQL** , **Spring Boot** and follows best practices for microservices development.
+## **Features**
+- Retrieve all products with detailed attributes such as:
+    - **Product ID**
+    - **Product Name**
+    - **Brand**
+    - **Category**
+    - **Image URL**
 
-A Spring Boot application that serves product data using **GraphQL**, powered by **Apache Jena** and **RDF4J**. The application uses semantic web standards (OWL, RDF) to describe and query BestBuy-style product information.
+- Fetch a single product by its ID.
 
+- Integration with a SPARQL endpoint for querying product data.
+- Exception handling for cases such as:
+    - Product not found.
+    - SPARQL query failure.
 
-This expose 2 end points 
-1) to Get ALL products
-2) TO product based on ID
----
+- Easy-to-extend architecture for new fields.
 
-## 📡To get ALL Products GraphQL Endpoint
+## **Technologies Used**
+- **Java **: For backend development.
+- **Spring Boot**: To create a robust, production-ready application.
+- **RDF4J**: For semantic web (SPARQL) querying.
+- **Maven**: For dependency and build management.
+- **Mockito** and **JUnit**: For unit testing and mocking dependencies.
 
-****
+## **SPARQL Endpoint**
+The microservice works with the following SPARQL endpoint:
+- **Endpoint URL:** `http://localhost:3030/myretail/sparql`
+- **Ontology Namespace:** `http://bestbuy.com/ontology#`
 
-**URL:** `http://localhost:8080/graphql`
+### SPARQL Queries
+It retrieves data using pre-defined SPARQL queries.
 
----
+## **How to Run**
+### Prerequisites
+- **Java 17** or later installed.
+- **Apache Maven** installed.
+- Running RDF4J SPARQL endpoint on Apache Jena Fuseki.
 
-## 🧪 Sample Query
+### Steps to Run
+1. Clone the repository:
+``` bash
+    git clone https://github.com/your-repository/myretail-product-service.git
+    cd myretail-product-service
+```
+1. Update the SPARQL endpoint in `application.properties` if needed:
+``` properties
+    sparql.endpoint=http://localhost:3030/myretail/sparql
+```
+1. Build the project using Maven:
+``` bash
+    mvn clean install
+```
+1. Start the Spring Boot application:
+``` bash
+    mvn spring-boot:run
+```
+1. Access the API on `http://localhost:8080`.
 
-```graphql
+## **API Documentation**
+
+1. **Get All Products**:
+```
+
+**Sample Request**
+URL: http://localhost:8080/graphql
 query {
   products {
     name
@@ -28,13 +77,7 @@ query {
     }
   }
 }
-```
-
----
-
-## 📥 Sample Response
-
-```json
+**Sample Response**
 {
   "data": {
     "products": [
@@ -61,25 +104,13 @@ query {
     ]
   }
 }
+
 ```
-     
+1. **Get Product by ID**:
+```  
 
-
----
-
-## 📡Get products based on ID GraphQL Endpoint
-
-****
----
-
-**URL:** `http://localhost:8080/graphql`
-
----
-
-## 🧪 Sample Query
-
-```graphql
-
+**Sample Request**
+URL: http://localhost:8080/graphql
 query {
 product(id: "BBY-0003") {
 id
@@ -91,13 +122,8 @@ url
 }
 }
 }
-```
 
----
-
-## 📥 Sample Response
-
-```json
+**Sample Response**
 {
 "data": {
 "product": {
@@ -111,18 +137,90 @@ url
 }
 }
 }
+
+## **Error Handling**
+
+| Status Code | Description |
+| --- | --- |
+| `404` | Product not found. |
+| `500` | SPARQL query execution failed. |
+
+**GlobalGraphQLExceptionHandler**
+
+This will handle API exceptions globaly
+On error - Error message is included in response.
+
+**Sample error Request**
+GRAPHQL http://localhost:8080/graphql
+
+query {
+    product(id: "TTY-0003") {
+        id
+        name
+        brand
+        category
+        image {
+            url
+        }
+    }
+}
+**Sample Error Response**
+
+{
+  "errors": [
+    {
+      "message": "Product with ID 'TTY-0003' not found.",
+      "locations": [
+        {
+          "column": 5,
+          "line": 2
+        }
+      ],
+      "path": [
+        "product"
+      ],
+      "extensions": {
+        "classification": "NOT_FOUND"
+      }
+    }
+  ],
+  "data": {
+    "product": null
+  }
+}
+
 ```
+## **Testing**
+### How to Run Unit Tests:
+The application uses **JUnit 5** and **Mockito** for unit testing. To run tests:
+``` bash
+mvn test
+```
+### Coverage:
+- Tests included for:
+    - **Service Layer** (e.g., `ProductService`)
+    - **Mapper Layer** (e.g., `ProductMapper`)
+    - **SPARQL Query Handling**
+
+- Test cases also include **negative scenarios** such as:
+    - Missing or null bindings.
+    - SPARQL query failures.
 
 
-
----
-
-**This application includes Unit test cases and integration test cases as well-**
-
-**Unit test**
-ProductServiceTest
-ProductControllerTest
-
-
-**Integration test here  :**
-ProductGraphQLIntegrationTest
+## **Folder Structure**
+``` bash
+src
+├── main
+│   ├── java
+│   │   └── com.myretail
+│   │       ├── controller    # Controllers
+│   │       ├── service       # Business Logic
+│   │       ├── mapper        # Mapper for SPARQL Binding to Models
+│   │       └── model         # Domain Models
+│   └── resources
+│       ├── application.properties  # Configuration
+│       └── products_schema,products - loaded owl schema and RDF data 
+└── test
+    └── java
+        └── com.myretail       # Unit Tests and Integration Test
+```
