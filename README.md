@@ -209,20 +209,4 @@ mvn test
     - SPARQL query failures.
 
 
-## **Folder Structure**
-``` bash
-src
-├── main
-│   ├── java
-│   │   └── com.myretail
-│   │       ├── controller    # Controllers
-│   │       ├── service       # Business Logic
-│   │       ├── mapper        # Mapper for SPARQL Binding to Models
-│   │       └── model         # Domain Models
-│   └── resources
-│       ├── application.properties  # Configuration
-│       └── products_schema,products - loaded owl schema and RDF data 
-└── test
-    └── java
-        └── com.myretail       # Unit Tests and Integration Test
 ```
